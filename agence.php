@@ -38,15 +38,9 @@
             <input type="text" id="latitude" class="w-full p-2 border border-gray-300 rounded">
           </div>
 
-          <!-- Adresse Input (Ville, Quartier, Rue, Code Postal, Email, Téléphone) -->
           <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2">Adresse:</label>
-            <input type="text" id="ville" class="w-full p-2 border border-gray-300 rounded mb-2" placeholder="Ville">
-            <input type="text" id="quartier" class="w-full p-2 border border-gray-300 rounded mb-2" placeholder="Quartier">
-            <input type="text" id="rue" class="w-full p-2 border border-gray-300 rounded mb-2" placeholder="Rue">
-            <input type="text" id="codePostal" class="w-full p-2 border border-gray-300 rounded mb-2" placeholder="Code Postal">
-            <input type="email" id="email" class="w-full p-2 border border-gray-300 rounded mb-2" placeholder="Email">
-            <input type="tel" id="telephone" class="w-full p-2 border border-gray-300 rounded" placeholder="Téléphone">
+            <label for="latitude" class="block text-gray-700 text-sm font-bold mb-2">Bank name:</label>
+            <input type="text" id="latitude" class="w-full p-2 border border-gray-300 rounded">
           </div>
 
           <!-- Submit Button -->
@@ -65,12 +59,7 @@
               <th class="py-2 px-4 border-b">ID</th>
               <th class="py-2 px-4 border-b">Longitude</th>
               <th class="py-2 px-4 border-b">Latitude</th>
-              <th class="py-2 px-4 border-b">Ville</th>
-              <th class="py-2 px-4 border-b">Quartier</th>
-              <th class="py-2 px-4 border-b">Rue</th>
-              <th class="py-2 px-4 border-b">Code Postal</th>
-              <th class="py-2 px-4 border-b">Email</th>
-              <th class="py-2 px-4 border-b">Téléphone</th>
+              <th class="py-2 px-4 border-b">Bank name</th>
             </tr>
           </thead>
           <tbody>
@@ -78,14 +67,9 @@
               <td class="py-2 px-4 border-b">1</td>
               <td class="py-2 px-4 border-b">-6.8325</td>
               <td class="py-2 px-4 border-b">33.9878</td>
-              <td class="py-2 px-4 border-b">Casablanca</td>
-              <td class="py-2 px-4 border-b">Quartier 1</td>
-              <td class="py-2 px-4 border-b">Rue A</td>
-              <td class="py-2 px-4 border-b">20000</td>
-              <td class="py-2 px-4 border-b">agence1@example.com</td>
-              <td class="py-2 px-4 border-b">123456789</td>
+              <th class="py-2 px-4 border-b">CIH Bank</th>
             </tr>
-            <!-- Add more fake agences as needed -->
+            
           </tbody>
         </table>
 

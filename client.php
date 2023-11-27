@@ -67,7 +67,6 @@
             <input type="text" id="clientQuartier" class="w-full p-2 border border-gray-300 rounded mb-2" placeholder="Quartier">
             <input type="text" id="clientRue" class="w-full p-2 border border-gray-300 rounded mb-2" placeholder="Rue">
             <input type="text" id="clientCodePostal" class="w-full p-2 border border-gray-300 rounded mb-2" placeholder="Code Postal">
-            <input type="email" id="clientEmail" class="w-full p-2 border border-gray-300 rounded mb-2" placeholder="Email">
             <input type="tel" id="clientTelephone" class="w-full p-2 border border-gray-300 rounded" placeholder="Téléphone">
           </div>
 
