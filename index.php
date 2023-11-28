@@ -80,12 +80,14 @@ if ($conn->query($sqlCreateTableAddress) === TRUE) {
 // Create "Client" table
 $tableName = "Client";
 $sqlCreateTableClient = "CREATE TABLE IF NOT EXISTS $tableName (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nom VARCHAR(15) NOT NULL,
-    prenom VARCHAR(15) NOT NULL,
-    date_naissance DATE NOT NULL,
-    nationalite VARCHAR(15),
-    genre ENUM('homme', 'femme'),
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(255) NOT NULL,
+    prenom VARCHAR(255) NOT NULL,
+    date_naissance DATE,
+    nationalite VARCHAR(255),
+    genre VARCHAR(10),
+    adresse VARCHAR(255),
+    telephone VARCHAR(20),
     address_id INT,
     agence_id INT,
     FOREIGN KEY (agence_id) REFERENCES Agence(id),
@@ -97,22 +99,43 @@ if ($conn->query($sqlCreateTableClient) === TRUE) {
 } else {
     echo "Error creating table $tableName: " . $conn->error;
 }
+$createTableSQL = "CREATE TABLE IF NOT EXISTS distribiteur (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    longitude VARCHAR(255) NOT NULL,
+    latitude VARCHAR(255) NOT NULL,
+    ville VARCHAR(255) NOT NULL,
+    quartier VARCHAR(255) NOT NULL,
+    rue VARCHAR(255) NOT NULL,
+    code_postal VARCHAR(20) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    telephone VARCHAR(20) NOT NULL
+)";
+
+if ($conn->query($createTableSQL) === TRUE) {
+echo "Table 'distribiteur' created successfully or already exists.<br>";
+} else {
+echo "Error creating table: " . $conn->error . "<br>";
+}
 
 
-// Create "Distribibeur" table
-$tableName = "Distribibeur";
-$sqlCreateTableDistribibeur = "CREATE TABLE IF NOT EXISTS $tableName (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    longitude FLOAT NOT NULL,
-    latitude FLOAT NOT NULL,
-    agence_name VARCHAR(15) NOT NULL,
+
+// Create "Distribiteur" table
+$tableName = "Distribiteur";
+$sqlCreateTableDistribiteur = "CREATE TABLE IF NOT EXISTS $tableName (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    longitude VARCHAR(255) NOT NULL,
+    latitude VARCHAR(255) NOT NULL,
+    ville VARCHAR(255) NOT NULL,
+    quartier VARCHAR(255) NOT NULL,
+    rue VARCHAR(255) NOT NULL,
+    code_postal VARCHAR(20) NOT NULL,
     agence_id INT,
     address_id INT,
     FOREIGN KEY (agence_id) REFERENCES Agence(id),
     FOREIGN KEY (address_id) REFERENCES Address(id)
 )";
 
-if ($conn->query($sqlCreateTableDistribibeur) === TRUE) {
+if ($conn->query($sqlCreateTableDistribiteur) === TRUE) {
     echo "Table $tableName created successfully";
 } else {
     echo "Error creating table $tableName: " . $conn->error;

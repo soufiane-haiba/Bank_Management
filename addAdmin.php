@@ -76,7 +76,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="bg-gray-800 text-white p-4 w-64">
         <h2 class="text-2xl font-bold">Admin Dashboard</h2>
         <ul class="mt-4">
-            <li><a href="agence.php" class="text-gray-300 hover:text-white">Les Agences</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white">Create Bank</a></li>
+            <li><a href="addAgence.php" class="text-gray-300 hover:text-white">Create Agence</a></li>
+            <li><a href="addDistributeur.php" class="text-gray-300 hover:text-white">Create Distribiteur</a></li>
+            <li><a href="addClient.php" class="text-gray-300 hover:text-white">Create Client</a></li>
         </ul>
     </div>
 
