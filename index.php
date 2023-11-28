@@ -141,6 +141,8 @@ if ($conn->query($sqlCreateTableDistribiteur) === TRUE) {
     echo "Error creating table $tableName: " . $conn->error;
 }
 
+
+
 // Close the connection
 $conn->close();
 ?>
