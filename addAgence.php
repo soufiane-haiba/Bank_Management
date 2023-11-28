@@ -14,31 +14,43 @@ if ($conn->connect_error) {
 }
 
 // Delete entry if ID is provided in the URL
-if (isset($_GET["delete_id"])) {
-    $deleteId = $_GET["delete_id"];
-    $deleteSql = "DELETE FROM agence WHERE id = $deleteId";
+if (isset($_POST["delete_id"])) {
+    $deleteId = $_POST["delete_id"];
+    $deleteSql = "DELETE FROM agence WHERE id = ?";
 
-    if ($conn->query($deleteSql) === TRUE) {
+    // Use prepared statement to prevent SQL injection
+    $stmt = $conn->prepare($deleteSql);
+    $stmt->bind_param("i", $deleteId);
+
+    if ($stmt->execute()) {
         echo "Agence deleted successfully";
     } else {
         echo "Error deleting agence: " . $conn->error;
     }
+
+    $stmt->close();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if the form fields are set before trying to access them
     $longitude = isset($_POST["longitude"]) ? $_POST["longitude"] : 0;
     $latitude = isset($_POST["latitude"]) ? $_POST["latitude"] : 0;
-    $agenceName = isset($_POST["bank_name"]) ? $_POST["bank_name"] : null;
+    $agenceName = isset($_POST["agence_name"]) ? $_POST["agence_name"] : null;
 
     // Insert data into the database
-    $sql = "INSERT INTO agence (longitude, latitude, agence_name) VALUES ('$longitude', '$latitude', '$agenceName')";
+    $sql = "INSERT INTO agence (longitude, latitude, agence_name) VALUES (?, ?, ?)";
 
-    if ($conn->query($sql) === TRUE) {
+    // Use prepared statement to prevent SQL injection
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("dds", $longitude, $latitude, $agenceName);
+
+    if ($stmt->execute()) {
         echo "Agence created successfully";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
+
+    $stmt->close();
 }
 
 ?>

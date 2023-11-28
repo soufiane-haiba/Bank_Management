@@ -1,4 +1,6 @@
-<?php /* Le code PHP que vous avez fourni */ ?>
+<?php 
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
