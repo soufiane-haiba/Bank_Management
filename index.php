@@ -27,7 +27,7 @@ if ($conn->query($sqlCreateDatabase) === TRUE) {
 // Select the created database
 $conn->select_db($databaseName);
 
-
+// Create "Bank" table
 $tableName = "Bank";
 $sqlCreateTableBank = "CREATE TABLE IF NOT EXISTS $tableName (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -47,6 +47,7 @@ $sqlCreateTableAgence = "CREATE TABLE IF NOT EXISTS $tableName (
     id INT PRIMARY KEY AUTO_INCREMENT,
     longitude FLOAT NOT NULL,
     latitude FLOAT NOT NULL,
+    agence_name VARCHAR(15) NOT NULL,
     bank_id INT,
     FOREIGN KEY (bank_id) REFERENCES Bank(id)
 )";
@@ -57,20 +58,25 @@ if ($conn->query($sqlCreateTableAgence) === TRUE) {
     echo "Error creating table $tableName: " . $conn->error;
 }
 
-
-// Create "Adress" table
-$tableName = "address";
-$sqlCreateDatabase ="CREATE DATABASE IF NOT EXISTS $tableName(
+// Create "Address" table
+$tableName = "Address";
+$sqlCreateTableAddress = "CREATE TABLE IF NOT EXISTS $tableName (
     id INT PRIMARY KEY AUTO_INCREMENT,
     ville VARCHAR(15),
     quartier VARCHAR(15),
     rue VARCHAR(15),
-    code postal INT(7),
-    telephone INT(12),
+    code_postal INT(7),
+    telephone INT(12)
 )";
 
-// Create "client" table
-$tableName = "client";
+if ($conn->query($sqlCreateTableAddress) === TRUE) {
+    echo "Table $tableName created successfully";
+} else {
+    echo "Error creating table $tableName: " . $conn->error;
+}
+
+// Create "Client" table
+$tableName = "Client";
 $sqlCreateTableClient = "CREATE TABLE IF NOT EXISTS $tableName (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(15) NOT NULL,
@@ -79,13 +85,10 @@ $sqlCreateTableClient = "CREATE TABLE IF NOT EXISTS $tableName (
     nationalite VARCHAR(15),
     genre ENUM('homme', 'femme'),
     address_id INT,
-    FOREIGN KEY (adress_id) REFERENCES address(id);
-
+    FOREIGN KEY (address_id) REFERENCES Address(id)
 )";
 
-
-
-if ($conn->query($sqlCreateTableAgence) === TRUE) {
+if ($conn->query($sqlCreateTableClient) === TRUE) {
     echo "Table $tableName created successfully";
 } else {
     echo "Error creating table $tableName: " . $conn->error;

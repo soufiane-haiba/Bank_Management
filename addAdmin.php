@@ -119,13 +119,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo "<tr>";
                     echo "<td class='py-2 px-4 border-b'>{$row['id']}</td>";
                     // Make the bank name clickable
-                    echo "<td class='py-2 px-4 border-b'><a href='agence.php?id={$row['id']}'>{$row['nom']}</a></td>";
+                    echo "<td class='py-2 px-4 border-b'><a href='addAgence.php?id={$row['id']}'>{$row['nom']}</a></td>";
                     echo "<td class='py-2 px-4 border-b'><img src='data:image/jpeg;base64," . base64_encode($row['logo']) . "' alt='Bank Logo' class='w-10 h-10'></td>";
                     echo "<td class='py-2 px-4 border-b'>
-                            <form method='post'>
-                                <input type='hidden' name='deleteBankId' value='{$row['id']}'>
-                                <button type='submit' class='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600'>Delete</button>
-                            </form>
+                          <form action='' method='post' onsubmit='return confirm(\"Are you sure you want to delete this agence?\");'>
+                            <input type='hidden' name='delete_id' value='" . $row["id"] . "'>
+                            <button type='submit' class='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600'>Delete</button>
+                          </form>
                           </td>";
                     echo "</tr>";
                 }
