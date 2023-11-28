@@ -27,7 +27,7 @@ if ($conn->query($sqlCreateDatabase) === TRUE) {
 // Select the created database
 $conn->select_db($databaseName);
 
-// Create "Bank" table
+
 $tableName = "Bank";
 $sqlCreateTableBank = "CREATE TABLE IF NOT EXISTS $tableName (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -57,6 +57,8 @@ if ($conn->query($sqlCreateTableAgence) === TRUE) {
     echo "Error creating table $tableName: " . $conn->error;
 }
 
+
+// Create "Adress" table
 $tableName = "address";
 $sqlCreateDatabase ="CREATE DATABASE IF NOT EXISTS $tableName(
     id INT PRIMARY KEY AUTO_INCREMENT,
